@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import kotlinx.android.synthetic.main.activity_notification.*
 import site.tsun.kotlinexamples.R
-import site.tsun.kotlinexamples.util.NotificationUtil
 
 
 class NotificationActivity : AppCompatActivity(), View.OnClickListener {
