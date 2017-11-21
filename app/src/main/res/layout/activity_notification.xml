@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnSingleLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Single Line Notification" />
+
+    <Button
+        android:id="@+id/btnMultipleLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Multiple Lines Notification" />
+    <Button
+        android:id="@+id/btnInbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send List Style Notification" />
+    <Button
+        android:id="@+id/btnHeadsUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Heads-up Notification" />
+</LinearLayout>

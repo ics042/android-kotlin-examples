@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Title -->
+    <include layout="@layout/title_bar"></include>
+    <!-- Fragment Layout-->
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"></FrameLayout>
+
+    <!-- Bottom RadioGroup-->
+    <RadioGroup
+        android:gravity="center_vertical"
+        android:id="@+id/rgMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#11000000"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <RadioButton
+            android:id="@+id/rbCommon"
+            android:text="Common"
+            android:drawableTop="@drawable/rb_common_framework_drawable_selector"
+            style="@style/bottom_bar_style"/>
+        <RadioButton
+            android:id="@+id/rbUi"
+            android:text="UI"
+            android:drawableTop="@drawable/rb_ui_drawable_selector"
+            style="@style/bottom_bar_style"/>
+        <RadioButton
+            android:id="@+id/rbFramework"
+            android:text="Framework"
+            android:drawableTop="@drawable/rb_framework_drawable_selector"
+            style="@style/bottom_bar_style"/>
+        <RadioButton
+            android:id="@+id/rbOther"
+            android:text="Other"
+            android:drawableTop="@drawable/rb_other_drawable_selector"
+            style="@style/bottom_bar_style"/>
+    </RadioGroup>
+</LinearLayout>
