@@ -18,13 +18,13 @@ Implement 4 normal styles of notifications
 + Inbox
 + Heads up
 
-### fcm
+### 3. Google FCM
 Google FCM samples
 
 # UI
-### Fragment Pager Tab
+### 1. Fragment Pager Tab
 Fragment + View Pager implement 4 pages tab template
 
-### AppBarLayout
+### 2. AppBarLayout
 + AppBarLayout + CollapsingToolbarLayout + NestedScrollView
 + Share button from app
