@@ -14,4 +14,7 @@
 
     <string name="msg_subscribed">Subscribed to news topic</string>
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+
+    <string name="first_example">First Example</string>
+    <string name="second_example">Second Example</string>
 </resources>

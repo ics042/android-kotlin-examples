@@ -48,7 +48,8 @@
             android:configChanges="orientation|screenSize|keyboardHidden"></activity>
         <activity android:name=".common.fcm.FcmDemoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"></activity>
-        <activity android:name=".other.architecture.lifecycles.ChronoActivity"></activity>
+        <activity android:name=".other.architecture.livedata.LiveDataActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"></activity>
 
         <service
             android:name=".common.fcm.MyFirebaseMessagingService">
