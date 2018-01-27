@@ -31,7 +31,7 @@ class MainActivity : FragmentActivity() {
     private fun initFragment() {
         mBaseFragment = ArrayList()
         mBaseFragment.add(CommonFragment())
-        mBaseFragment.add(FrameworkFragment())
+        mBaseFragment.add(LibraryFragment())
         mBaseFragment.add(UiFragment())
         mBaseFragment.add(OtherFragment())
     }

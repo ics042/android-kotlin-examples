@@ -34,7 +34,7 @@
             style="@style/bottom_bar_style"/>
         <RadioButton
             android:id="@+id/rbFramework"
-            android:text="Framework"
+            android:text="Library"
             android:drawableTop="@drawable/rb_framework_drawable_selector"
             style="@style/bottom_bar_style"/>
         <RadioButton

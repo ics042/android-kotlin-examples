@@ -6,8 +6,6 @@ import android.widget.AdapterView
 import kotlinx.android.synthetic.main.fragment_other.view.*
 import site.tsun.kotlinexamples.R
 import site.tsun.kotlinexamples.adapter.FrameworkAdapter
-import site.tsun.kotlinexamples.other.architecture.lifecycles.LifeCycleActivity
-import site.tsun.kotlinexamples.other.architecture.lifecycles.first.ChronoActivity
 import site.tsun.kotlinexamples.other.architecture.livedata.LiveDataActivity
 import site.tsun.kotlinexamples.other.architecture.rxjava.ui.UserActivity
 
@@ -23,7 +21,7 @@ class OtherFragment : BaseFragment(), AdapterView.OnItemClickListener {
     }
 
     override fun initData() {
-        data = arrayOf( "Arch Components RxJava", "Lifecycle", "LiveData")
+        data = arrayOf( "Arch Components RxJava", "LiveData")
         adapter = FrameworkAdapter(mContext, data)
         mView.lvOther.adapter = adapter
     }
@@ -33,10 +31,6 @@ class OtherFragment : BaseFragment(), AdapterView.OnItemClickListener {
         when (tmp) {
             "Arch Components RxJava" -> {
                 val intent = Intent(mContext, UserActivity::class.java)
-                startActivity(intent)
-            }
-            "Lifecycle" -> {
-                val intent = Intent(mContext, LifeCycleActivity::class.java)
                 startActivity(intent)
             }
             "LiveData" -> {
