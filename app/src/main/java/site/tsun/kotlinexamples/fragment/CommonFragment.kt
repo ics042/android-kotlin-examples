@@ -9,6 +9,7 @@ import android.content.Intent
 import kotlinx.android.synthetic.main.fragment_common.view.*
 import site.tsun.kotlinexamples.common.fcm.FcmDemoActivity
 import site.tsun.kotlinexamples.common.notification.NotificationActivity
+import site.tsun.kotlinexamples.common.video.VideoActivity
 import site.tsun.kotlinexamples.common.webview.WebViewActivity
 
 class CommonFragment : BaseFragment(), AdapterView.OnItemClickListener {
@@ -23,7 +24,7 @@ class CommonFragment : BaseFragment(), AdapterView.OnItemClickListener {
     }
 
     override fun initData() {
-        data = arrayOf("WebView", "Notification", "FCM")
+        data = arrayOf("WebView", "Notification", "FCM", "Video")
         adapter = FrameworkAdapter(mContext, data)
         mView.lvCommon.adapter = adapter
     }
@@ -41,6 +42,10 @@ class CommonFragment : BaseFragment(), AdapterView.OnItemClickListener {
             }
             "FCM" -> {
                 val intent = Intent(mContext, FcmDemoActivity::class.java)
+                startActivity(intent)
+            }
+            "Video" -> {
+                val intent = Intent(mContext, VideoActivity::class.java)
                 startActivity(intent)
             }
         }

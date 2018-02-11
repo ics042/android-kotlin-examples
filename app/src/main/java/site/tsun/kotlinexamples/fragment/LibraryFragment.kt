@@ -1,11 +1,12 @@
 package site.tsun.kotlinexamples.fragment
 
+import android.content.Intent
 import android.view.View
 import android.widget.AdapterView
 import kotlinx.android.synthetic.main.fragment_library.view.*
-import kotlinx.android.synthetic.main.fragment_ui.view.*
 import site.tsun.kotlinexamples.R
 import site.tsun.kotlinexamples.adapter.FrameworkAdapter
+import site.tsun.kotlinexamples.library.rxjava.simpleretrofit.RxJavaActivity
 
 class LibraryFragment : BaseFragment(), AdapterView.OnItemClickListener{
 
@@ -20,7 +21,7 @@ class LibraryFragment : BaseFragment(), AdapterView.OnItemClickListener{
     }
 
     override fun initData() {
-        data = arrayOf()
+        data = arrayOf("RxJava-Simple")
         adapter = FrameworkAdapter(mContext, data)
         mView.lvFragment.adapter = adapter
     }
@@ -28,7 +29,10 @@ class LibraryFragment : BaseFragment(), AdapterView.OnItemClickListener{
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         val tmp = data[p2]
         when (tmp) {
-
+            "RxJava-Simple" -> {
+                val intent = Intent(mContext, RxJavaActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }

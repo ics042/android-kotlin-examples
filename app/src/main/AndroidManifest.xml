@@ -50,6 +50,10 @@
             android:configChanges="orientation|screenSize|keyboardHidden"></activity>
         <activity android:name=".other.architecture.livedata.LiveDataActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"></activity>
+        <activity android:name=".library.rxjava.simpleretrofit.RxJavaActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"></activity>
+        <activity android:name=".common.video.VideoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"></activity>
 
         <service
             android:name=".common.fcm.MyFirebaseMessagingService">
