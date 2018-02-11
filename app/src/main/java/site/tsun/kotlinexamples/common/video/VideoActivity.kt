@@ -4,33 +4,81 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
-import android.widget.AdapterView
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
+import android.widget.Toast
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_video.*
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import site.tsun.kotlinexamples.R
-import site.tsun.kotlinexamples.adapter.FrameworkAdapter
 
 
-class VideoActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
+class VideoActivity : AppCompatActivity() {
 
+    private val BASE_URL = "http://192.168.178.22/"
 
-    private lateinit var data: Array<String>
-    private var adapter: FrameworkAdapter? = null
+    private var compositeDisposable: CompositeDisposable? = null
+    private var adapter: MyRecyclerAdapter = MyRecyclerAdapter()
+    private var subscribe: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video)
-        data = arrayOf("1.mp4", "2.mp4", "3.mp4", "1.rmvb", "2.rmvb", "3.rmvb")
-        adapter = FrameworkAdapter(this, data)
-        lvVideo.adapter = adapter
-        lvVideo.setOnItemClickListener(this)
+        compositeDisposable = CompositeDisposable()
+
+        initRecyclerView()
+
+        loadJSON()
     }
 
-    override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        val tmp = data[p2]
-        val newVideoPath = "http://192.168.178.22/video/"+tmp
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.setDataAndType(Uri.parse(newVideoPath), "video/*")
-        startActivity(intent)
+    private fun initRecyclerView() {
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        rvList.layoutManager = layoutManager
+        val dividerItemDecoration = DividerItemDecoration(this,
+                layoutManager.orientation)
+        rvList.addItemDecoration(dividerItemDecoration)
+    }
+
+    private fun loadJSON() {
+
+        val requestInterface = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(VideoApiInterface::class.java)
+
+        compositeDisposable?.add(requestInterface.getVideoData()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleResponse, this::handleError))
+    }
+    private fun handleResponse(dataList: ArrayList<String>) {
+
+        adapter.dataList = dataList
+        subscribe = adapter.clickEvent
+                .subscribe({
+                    val newVideoPath = "http://192.168.178.22/video/"+it
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.setDataAndType(Uri.parse(newVideoPath), "video/*")
+                    startActivity(intent)
+                })
+        rvList.adapter = adapter
+    }
+
+    private fun handleError(error: Throwable) {
+
+        Toast.makeText(this, "Error ${error.localizedMessage}", Toast.LENGTH_SHORT).show()
+        Log.e("rxjava",error.localizedMessage)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        subscribe?.dispose()
     }
 }
