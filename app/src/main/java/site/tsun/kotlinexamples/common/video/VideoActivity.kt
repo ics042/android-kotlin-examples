@@ -21,7 +21,7 @@ import site.tsun.kotlinexamples.R
 
 class VideoActivity : AppCompatActivity() {
 
-    private val BASE_URL = "http://192.168.178.22/"
+    private val BASE_URL = "http://192.168.178.35/"
 
     private var compositeDisposable: CompositeDisposable? = null
     private var adapter: MyRecyclerAdapter = MyRecyclerAdapter()
@@ -63,7 +63,7 @@ class VideoActivity : AppCompatActivity() {
         adapter.dataList = dataList
         subscribe = adapter.clickEvent
                 .subscribe({
-                    val newVideoPath = "http://192.168.178.22/video/"+it
+                    val newVideoPath = "http://192.168.178.35/video/"+it
                     val intent = Intent(Intent.ACTION_VIEW)
                     intent.setDataAndType(Uri.parse(newVideoPath), "video/*")
                     startActivity(intent)

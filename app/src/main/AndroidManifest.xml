@@ -38,8 +38,6 @@
             android:configChanges="orientation|screenSize|keyboardHidden"></activity>
         <activity android:name=".ui.fragmentpagertab.FragmentPagerTabActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"></activity>
-        <activity android:name=".other.architecture.rxjava.ui.UserActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"></activity>
         <activity android:name=".ui.appbarlayout.AppBarLayoutActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"></activity>
         <activity android:name=".common.notification.NotificationActivity"
@@ -48,7 +46,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"></activity>
         <activity android:name=".common.fcm.FcmDemoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"></activity>
-        <activity android:name=".other.architecture.livedata.LiveDataActivity"
+        <activity android:name=".common.pdf.PdfActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"></activity>
         <activity android:name=".library.rxjava.simpleretrofit.RxJavaActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"></activity>
