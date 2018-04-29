@@ -179,7 +179,7 @@ class PdfRendererBasicFragment : Fragment(), View.OnClickListener {
         // Use `openPage` to open a specific page in PDF.
         currentPage = pdfRenderer.openPage(index)
         // Important: the destination bitmap must be ARGB (not RGB).
-        val bitmap = createBitmap(currentPage.width, currentPage.height, Bitmap.Config.ARGB_8888)
+        val bitmap = createBitmap(currentPage.width * 4, currentPage.height * 4, Bitmap.Config.ARGB_8888)
         // Here, we render the page onto the Bitmap.
         // To render a portion of the page, use the second and third parameter. Pass nulls to get
         // the default result.
